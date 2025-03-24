@@ -10,6 +10,14 @@ This project implements a Deep Q-Network (DQN) agent to play the Atari Pacman ga
 - **Learning Algorithm**: Deep Q-Network (DQN)
 - **Policy Network**: Convolutional Neural Network (CNN Policy)
 
+## Policy Choice
+
+When implementing this project, we chose CnnPolicy over MlpPolicy for the following reasons:
+
+- The input to the model was an image of the game's state as a human player would see, it therefore made sense to use CNNs over Multilayer Perceptrons.
+- CNNs also efficiently extract relevant spatial features to enable the model to understand the image better. MLPs, however, do not generalise well over spatial data.
+- Research from DeepMind's DQN Paper, shows tht CNNs outperform MLPs for Atari games.
+
 ## Hyperparameter Exploration
 
 ### Experimental Configurations and Performance Analysis
