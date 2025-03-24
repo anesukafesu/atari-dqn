@@ -18,28 +18,19 @@ import cv2
 import numpy as np
 
 
-def preprocess_observation(obs):
-    obs_gray = cv2.cvtColor(obs, cv2.COLOR_RGB2GRAY)
-    obs_resized = cv2.resize(obs_gray, (84, 84), interpolation=cv2.INTER_AREA)
-    obs_resized = obs_resized / 255.0
-    return np.array(obs_resized, dtype=np.float32)
-
-
 def play():
     # Start virtual display
     display = Display(visible=0, size=(1400, 900))
     display.start()
 
     env = gym.make("ALE/Pacman-v5", render_mode="rgb_array")
-    env = TransformObservation(env, preprocess_observation)
-    env = FrameStack(env, num_stack=4)
 
     # Setup the wrapper to record the video
-    video_callable=lambda _: True
+    video_callable=lambda episode_id: True
     env = RecordVideo(env, video_folder='./videos', episode_trigger=video_callable)
     
     # Load trained model
-    model = DQN.load("dqn_model.zip")
+    model = DQN.load("/kaggle/working/dqn_model2.zip")
 
     obs, _ = env.reset()
     done = False
@@ -48,7 +39,7 @@ def play():
     while not(done or truncated):
         obs = np.array(obs)
         action, _ = model.predict(obs, deterministic=True)
-        obs, _, done, truncated, _ = env.step(action)
+        obs, reward, done, truncated, info = env.step(action)
         env.render()
 
         if done or truncated:
@@ -56,7 +47,7 @@ def play():
 
     env.close()
 
-    # Display the video
+        # Display the video
     video = io.open(glob.glob('videos/*.mp4')[-1], 'r+b').read()
     encoded = base64.b64encode(video)
     ipythondisplay.display(HTML(data='''
@@ -64,6 +55,7 @@ def play():
             <source src="data:video/mp4;base64,{0}" type="video/mp4" />
         </video>
     '''.format(encoded.decode('ascii'))))
+
 
 if __name__ == "__main__":
     play()
