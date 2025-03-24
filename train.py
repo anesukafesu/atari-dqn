@@ -36,9 +36,6 @@ def train():
   # Define the environment
   gym.register_envs(ale_py)
   environment = gym.make('ALE/Pacman-v5', render_mode='rgb_array')
-  environment = AtariWrapper(environment) # Implements preprocessing steps such as grayscale and frame skipping
-  environment = DummyVecEnv([lambda: environment]) # Vectorisation enables training multiple agents at once?
-  environment = VecFrameStack(environment, n_stack=4) # Stacks 4 frames for temporal awareness
 
   # Define the agent
   model = DQN(
