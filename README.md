@@ -80,6 +80,12 @@ Gameplay video demonstrates the agent's improved performance using the optimized
 - Better understanding of game mechanics
 - Increased reward collection
 
+## Gameplay Video
+
+[Watch the Pacman AI in Action](https://github.com/anesukafesu/atari-dqn/raw/main/formative.mp4)
+
+[![Pacman AI Gameplay](https://img.youtube.com/vi/vt5fpE0bzSY/0.jpg)](https://github.com/anesukafesu/atari-dqn/raw/main/formative.mp4)
+
 ## Lessons Learned
 - Critical role of hyperparameter tuning
 - Balancing exploration and long-term reward consideration
