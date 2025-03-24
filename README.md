@@ -114,6 +114,6 @@ Additional logs on reward and loss are stored in the `tensorboard_logs` folder.
 
 ## Contributions
 
-- Emmanuel Yakubu (Training and Documentation)
+- Emmanuel Yakubu (Play script and Documentation)
 - Joak (Training)
-- Anesu (Training and Playing)
+- Anesu (Training)
