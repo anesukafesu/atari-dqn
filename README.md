@@ -12,7 +12,7 @@ This project implements a Deep Q-Network (DQN) agent to play the Atari Pacman ga
 
 ### Experimental Configurations and Performance Analysis
 
-| Experiment | Gamma (γ) | Learning Rate (α) | Epsilon Parameters | Performance Explanation |
+| Experiment | Gamma (γ) | Learning Rate (α) | Epsilon Parameters | Noted Observations |
 |-----------|-----------|-------------------|--------------------|-----------------------|
 | 1: Long-Term Focus | 0.95 | 0.00005 | Start: 1.0<br>End: 0.01<br>Decay: 0.05 |  <br>- High gamma encouraged long-term thinking<br>- Faster learning rate caused instability<br>- Exploration was too structured, limiting random discoveries<br>- Agent showed promise but lacked adaptability |
 | 2: Faster Learning | 0.80 | 0.0001 | Start: 1.0<br>End: 0.05<br>Decay: 0.02 | <br>- Low gamma (0.80) made agent too short-sighted<br>- Very high learning rate caused erratic weight updates<br>- Rapid exploration decay limited learning opportunities<br>- Agent struggled to develop a coherent strategy |
